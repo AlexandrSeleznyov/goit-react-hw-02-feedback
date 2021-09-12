@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import s from "./Buttons.module.css";
+import s from "./FeedBackOptions.module.css";
 
 const FeedBackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <>
-      {Object.keys(options).map((option) => (
+      {options.map((option) => (
         <button
           className={s.buttons}
           type="button"
-          option={option}
           key={option}
           onClick={() => onLeaveFeedback(option)}
         >
@@ -21,7 +20,7 @@ const FeedBackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedBackOptions.propTypes = {
-  options: PropTypes.object,
+  options: PropTypes.array,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 

@@ -1,9 +1,8 @@
 import { Component } from "react";
-import "./App.css";
-import FeedBackOptions from "./Components/FeedbackOptions/FeedBackOptions";
-import Statistics from "./Components/Statistics/Statistics";
-import Section from "./Components/Section/Section";
-import Notification from "./Components/Notification/Notification";
+import FeedBackOptions from "./components/FeedbackOptions/FeedBackOptions";
+import Statistics from "./components/Statistics/Statistics";
+import Section from "./components/Section/Section";
+import Notification from "./components/Notification/Notification";
 
 export default class App extends Component {
   state = {
@@ -28,25 +27,27 @@ export default class App extends Component {
   };
 
   render() {
+    const options = Object.keys(this.state);
+    const isShowStatistics = this.total;
     return (
       <>
         <Section title="Please leave feedback">
           <FeedBackOptions
-            options={this.state}
+            options={options}
             onLeaveFeedback={this.handleIncrement}
-          ></FeedBackOptions>
+          />
         </Section>
         <Section title="Statistics">
-          {this.total() ? (
+          {isShowStatistics ? (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
               total={this.total()}
               positivePercentage={this.positivePercentage()}
-            ></Statistics>
+            />
           ) : (
-            <Notification message="No feedback given"></Notification>
+            <Notification message="No feedback given" />
           )}
         </Section>
       </>
