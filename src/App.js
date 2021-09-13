@@ -28,7 +28,7 @@ export default class App extends Component {
 
   render() {
     const options = Object.keys(this.state);
-    const isShowStatistics = this.total;
+    const isShowStatistics = this.total() > 0;
     return (
       <>
         <Section title="Please leave feedback">
